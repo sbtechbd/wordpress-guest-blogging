@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Guest Blogging
  * Plugin URI:  https://subrata6630.github.io
- * Author:      Plugin Author Name
+ * Author:      Subrata Debnath
  * Author URI:  https://subrata6630.github.io
  * Description: This plugin does Gust Blogging
  * Version:     0.1.0
@@ -12,14 +12,14 @@
  * text-domain: guest-blogging
  */
 
-add_shortcode('ourshortcode', 'call_back_for_our_shortcode');
+add_shortcode('guestbloggingshortcode', 'guest_blogging_shortcode');
 
-function call_back_for_our_shortcode(){
+function guest_blogging_shortcode(){
     ?>
 <form class="our_form" method="POST">
-    <input type="text" placeholder="Title" name="title"><br>
+    <input type="text" placeholder="Title" name="title"><br><br>
     <textarea name="content" id="" cols="30" rows="10">Content</textarea>
-    <br>
+    <br><br>
     <button type="submit" name="submit">Create Post</button>
 </form>
 <?php
@@ -50,7 +50,8 @@ if (isset($_POST['submit'])) {
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_scripts');
 
 function my_theme_enqueue_scripts() {
-    // Enqueue your scripts and styles here using wp_enqueue_script() and wp_enqueue_style()
-    wp_enqueue_style('admin-custom-style', get_template_directory_uri() . '/assets/css/index.css', array(), '1.0');
-    wp_enqueue_script('admin-custom-script', get_template_directory_uri() . '/assets/js/index.js', array('jquery'), '1.0', true);
+    
+    // Enqueue your scripts and styles 
+    wp_enqueue_style('my-theme-style', plugin_dir_url(__FILE__) . '/assets/css/index.css', array(), '1.0');
+    wp_enqueue_script('admin-custom-script', plugin_dir_url(__FILE__) . '/assets/js/index.js', array('jquery'), '1.0', true);
 }
