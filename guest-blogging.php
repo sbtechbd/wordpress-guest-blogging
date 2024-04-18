@@ -47,11 +47,17 @@ if (isset($_POST['submit'])) {
 }
 }
 
+
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+} 
+
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_scripts');
 
 function my_theme_enqueue_scripts() {
     
     // Enqueue your scripts and styles 
-    wp_enqueue_style('my-theme-style', plugin_dir_url(__FILE__) . '/assets/css/index.css', array(), '1.0');
+    wp_enqueue_style('admin-custom-style', plugin_dir_url(__FILE__) . '/assets/css/index.css', array(), '1.0');
     wp_enqueue_script('admin-custom-script', plugin_dir_url(__FILE__) . '/assets/js/index.js', array('jquery'), '1.0', true);
 }
