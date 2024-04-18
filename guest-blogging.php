@@ -16,7 +16,7 @@ add_shortcode('guestbloggingshortcode', 'guest_blogging_shortcode');
 
 function guest_blogging_shortcode(){
     ?>
-<form class="our_form" method="POST">
+<form class="our-form" method="POST">
     <input type="text" placeholder="Title" name="title"><br><br>
     <textarea name="content" id="" cols="30" rows="10">Content</textarea>
     <br><br>
@@ -61,3 +61,8 @@ function my_theme_enqueue_scripts() {
     wp_enqueue_style('admin-custom-style', plugin_dir_url(__FILE__) . '/assets/css/index.css', array(), '1.0');
     wp_enqueue_script('admin-custom-script', plugin_dir_url(__FILE__) . '/assets/js/index.js', array('jquery'), '1.0', true);
 }
+
+function enqueue_tailwind_css() {
+    wp_enqueue_style('tailwind-css', 'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css', array(), '2.2.19');
+}
+add_action('wp_enqueue_scripts', 'enqueue_tailwind_css');
